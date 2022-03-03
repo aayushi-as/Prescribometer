@@ -10,4 +10,5 @@ urlpatterns = [
     path('analytics/',views.analytics, name='analytics'),
     path('newPatient/',views.newPatient, name='newPatient'),
     path('existingPatient/',views.existingPatient, name='existingPatient'),
+    path('newPatient/record/',views.record,name = 'record')
 ]
