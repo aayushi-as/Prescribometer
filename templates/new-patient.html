@@ -204,19 +204,36 @@
                         </div>
                     </div>
                     <div class="voice-record text-center">
-                        <form action="record">
-                        <button type="submit" class="btn"><i class="bi bi-mic-fill me-1"></i>Record
-                            Details</button>
-                        </form>   
+                        <form action="record" method="get">
+                        {% csrf_token %}
+                        <button type="submit" id = "Record" class="btn"><i class="bi bi-mic-fill me-1"></i>Record
+                            Details
+                        </button>
+                          
                         <h3 class="my-4">Click on record to start recording prescription</h3>
                         <div class="card mx-5">
                             <div class="card-body">
                                 <h5 class="card-title">Enter details</h5>
-                                <form class="row g-3 mx-5">
-                                    <div class="col-md-12">
-                                        <input type="text" class="form-control" placeholder="Prescription">
+                                
+                                <form class="row g-3 mx-5" method="get" action="record">
+                                    
+                                    <div class="col-md-12" >
+                                        <!--<input name="audio_text" type="text" value='{{ audio_text }}' contenteditable="true"/>-->
+                                        <textarea name="fulltextarea" rows="10" cols="40">{{audio_text}}</textarea>
+                                        <!--<h4 contentEditable="true" id="audio_text">{{audio_text}}</h4>-->
+                                    
+                                    
                                     </div>
-                                    </form>
+                                    </div>
+                                    </div>
+                                </form>
+                                </div>
+                                <div class="text-center">
+                                    <form action = "save_changes">
+                                    <button type="submit" class="btn">Save Changes</button>
+                                    <button type="reset" class="btn">Proceed</button>
+                                </form>
+                                </div>
                                     </div>
                                     </div>
                     </div>

@@ -10,5 +10,7 @@ urlpatterns = [
     path('analytics/',views.analytics, name='analytics'),
     path('newPatient/',views.newPatient, name='newPatient'),
     path('existingPatient/',views.existingPatient, name='existingPatient'),
-    path('newPatient/record/',views.record,name = 'record')
+    path('newPatient/record/',views.record,name = 'record'),
+    path('newPatient/record/save_changes/',views.save_changes,name = 'save_changes'),
+    path('newPatient/record/record',views.record,name = 'record'),
 ]

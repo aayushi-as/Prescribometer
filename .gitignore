@@ -1,2 +1,5 @@
 /assets
 /Prescribometer/settings.py
+/Prescribometer/__pycache__
+/app/__pycache__/urls.cpython-38.pyc
+/app/__pycache__/views.cpython-38.pyc
