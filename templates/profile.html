@@ -13,7 +13,7 @@
 
     <!-- Favicons -->
     <link href="{% static 'img/favicon.png' %}" rel="icon">
-	<link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+    <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -22,16 +22,16 @@
         rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-	<link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-	<link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
-	<link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
-	<link href="{% static 'vendor/quill/quill.snow.css' %}" rel="stylesheet">
-	<link href="{% static 'vendor/quill/quill.bubble.css' %}" rel="stylesheet">
-	<link href="{% static 'vendor/remixicon/remixicon.css' %}" rel="stylesheet">
-	<link href="{% static 'vendor/simple-datatables/style.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/quill/quill.snow.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/quill/quill.bubble.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/simple-datatables/style.css' %}" rel="stylesheet">
 
-	<!-- Template Main CSS File -->
-	<link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <!-- Template Main CSS File -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
 </head>
 
 <body>
@@ -67,12 +67,13 @@
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                         <img src="{% static 'img/profile-img.jpg' %}" alt="Profile" class="rounded-circle">
-                        <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+                        <span class="d-none d-md-block dropdown-toggle ps-2">{{user.first_name}}
+                            {{user.last_name}}</span>
                     </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6>Kevin Anderson</h6>
+                            <h6> {{user.first_name}} {{user.last_name}}</h6>
                             <span>Family Physician</span>
                         </li>
                         <li>
@@ -115,44 +116,30 @@
     </header><!-- End Header -->
 
     <!-- ======= Sidebar ======= -->
-	<aside id="sidebar" class="sidebar">
-		<ul class="sidebar-nav" id="sidebar-nav">
-			<li class="nav-item">
-				<a class="nav-link collapsed" href="{% url 'dashboard' %}">
-					<i class="bi bi-grid"></i>
-					<span>Dashboard</span>
-				</a>
-			</li>
+    <aside id="sidebar" class="sidebar">
+        <ul class="sidebar-nav" id="sidebar-nav">
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{% url 'dashboard' %}">
+                    <i class="bi bi-grid"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
 
-			<li class="nav-item">
-				<a class="nav-link" href="{% url 'profile' %}">
-					<i class="bi bi-person-square"></i>
-					<span>Profile</span>
-				</a>
-			</li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'profile' %}">
+                    <i class="bi bi-person-square"></i>
+                    <span>Profile</span>
+                </a>
+            </li>
 
-			<li class="nav-item">
-				<a class="nav-link collapsed" href="{% url 'newPatient' %}">
-					<i class="bi bi-person"></i>
-					<span>New Patient</span>
-				</a>
-			</li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{% url 'newPatient' %}">
+                    <i class="bi bi-person"></i>
+                    <span>New Patient</span>
+                </a>
+            </li>
 
-			<li class="nav-item">
-				<a class="nav-link collapsed" href="{% url 'existingPatient' %}">
-					<i class="bi bi-people"></i>
-					<span>Existing Patient</span>
-				</a>
-			</li>
-
-			<li class="nav-item">
-				<a class="nav-link collapsed" href="{% url 'analytics' %}">
-					<i class="bi bi-bar-chart-fill"></i>
-					<span>Analytics</span>
-				</a>
-			</li>
-		</ul>
-	</aside><!-- End Sidebar-->
+    </aside><!-- End Sidebar-->
 
     <main id="main" class="main">
 
@@ -174,7 +161,7 @@
                         <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
                             <img src="{% static 'img/profile-img.jpg' %}" alt="Profile" class="rounded-circle">
-                            <h2>Kevin Anderson</h2>
+                            <h2> {{user.first_name}} {{user.last_name}}</h2>
                             <h3>Family Physician</h3>
                         </div>
                     </div>
@@ -209,22 +196,12 @@
                             <div class="tab-content pt-2">
 
                                 <div class="tab-pane fade show active profile-overview" id="profile-overview">
-                                    <h5 class="card-title">About</h5>
-                                    <p class="small fst-italic">Sunt est soluta temporibus accusantium neque nam maiores
-                                        cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt
-                                        iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea
-                                        saepe at unde.</p>
 
                                     <h5 class="card-title">Profile Details</h5>
 
                                     <div class="row">
                                         <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                                        <div class="col-lg-9 col-md-8">Kevin Anderson</div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-lg-3 col-md-4 label">Registration ID</div>
-                                        <div class="col-lg-9 col-md-8">110-111</div>
+                                        <div class="col-lg-9 col-md-8"> {{user.first_name}} {{user.last_name}}</div>
                                     </div>
 
                                     <div class="row">
@@ -249,15 +226,13 @@
 
                                     <div class="row">
                                         <div class="col-lg-3 col-md-4 label">Email</div>
-                                        <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
+                                        <div class="col-lg-9 col-md-8">{{user.email}}</div>
                                     </div>
 
                                     <div class="row">
                                         <div class="col-lg-3 col-md-4 label">Daily Timings</div>
                                         <div class="col-lg-9 col-md-8">Monday to Saturday: 10 AM to 5 PM</div>
                                     </div>
-
-
 
                                 </div>
 
@@ -285,15 +260,7 @@
                                                 Name</label>
                                             <div class="col-md-8 col-lg-9">
                                                 <input name="fullName" type="text" class="form-control" id="fullName"
-                                                    value="Kevin Anderson">
-                                            </div>
-                                        </div>
-
-                                        <div class="row mb-3">
-                                            <label for="about" class="col-md-4 col-lg-3 col-form-label">About</label>
-                                            <div class="col-md-8 col-lg-9">
-                                                <textarea name="about" class="form-control" id="about"
-                                                    style="height: 100px">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</textarea>
+                                                    value="{{user.first_name}} {{user.last_name}}">
                                             </div>
                                         </div>
 
@@ -336,7 +303,7 @@
                                             <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                                             <div class="col-md-8 col-lg-9">
                                                 <input name="email" type="email" class="form-control" id="Email"
-                                                    value="k.anderson@example.com">
+                                                    value="{{user.email}}">
                                             </div>
                                         </div>
 
@@ -458,20 +425,21 @@
         </div>
     </footer><!-- End Footer -->
 
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
-	<script src="{% static 'vendor/apexcharts/apexcharts.min.js' %}"></script>
-	<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-	<script src="{% static 'vendor/chart.js/chart.min.js' %}"></script>
-	<script src="{% static 'vendor/echarts/echarts.min.js' %}"></script>
-	<script src="{% static 'vendor/quill/quill.min.js' %}"></script>
-	<script src="{% static 'vendor/simple-datatables/simple-datatables.js' %}"></script>
-	<script src="{% static 'vendor/tinymce/tinymce.min.js' %}"></script>
-	<script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+    <script src="{% static 'vendor/apexcharts/apexcharts.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'vendor/chart.js/chart.min.js' %}"></script>
+    <script src="{% static 'vendor/echarts/echarts.min.js' %}"></script>
+    <script src="{% static 'vendor/quill/quill.min.js' %}"></script>
+    <script src="{% static 'vendor/simple-datatables/simple-datatables.js' %}"></script>
+    <script src="{% static 'vendor/tinymce/tinymce.min.js' %}"></script>
+    <!-- <script src="{% static 'vendor/php-email-form/validate.js' %}"></script> -->
 
-	<!-- Template Main JS File -->
-	<script src="{% static 'js/main_dashboard.js' %}"></script>
+    <!-- Template Main JS File -->
+    <script src="{% static 'js/main_dashboard.js' %}"></script>
 
 </body>
 

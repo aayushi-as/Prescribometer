@@ -217,24 +217,30 @@
 					<p>Please login into your account.</p>
 				</div>
 
-				<form action="forms/register.php" method="post" role="form" class="php-email-form">
+				<form action="/userLogin" method="post" role="form" class="php-email-form">
+					{% csrf_token %}
 					<div class="text-center">
-						<input type="username" class="form-control" name="username" id="username"
-							placeholder="Your Username" data-rule="username" data-msg="Please enter a valid username" />
+						<input type="email" class="form-control" name="username" id="username"
+							placeholder="Your Email Id" data-rule="username" data-msg="Please enter a valid email-id" />
 						<div class="validate"></div>
+						<!-- <input type = "text" name = "username" placeholder="Your Username"> -->
 					</div>
 					<br>
 					<div class="text-center">
-						<input type="password" class="form-control" name="password" id="password" placeholder="Password"
-							data-rule="password" data-msg="Enter atleast 8 characters" />
+						<input type="password" class="form-control" name="password" id="password"
+							placeholder="Your Password" data-rule="password" data-msg="Enter atleast 8 characters" />
 						<div class="validate"></div>
+						<!-- <input type = "password" name = "password" placeholder="Your Password"> -->
+
 					</div>
 					<br>
+
 					<section id="register" class="register section-bg">
 						<div class="container">
 							<div class="text-center">
+								<input type="submit" value="LOGIN" class="btn rounded-pill px-4">
 								<!-- <button type="submit">Login</button> -->
-								<a href="{% url 'dashboard' %}" class="btn rounded-pill px-4">Login</a>
+								<!-- <a href="{% url 'dashboard' %}" class="btn rounded-pill px-4">Login</a> -->
 							</div>
 						</div>
 						<br>
@@ -529,7 +535,7 @@
 	<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 	<script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
 	<script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
-	<script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+	<!-- <script src="{% static 'vendor/php-email-form/validate.js' %}"></script> -->
 
 	<!-- Template Main JS File -->
 	<script src="{% static 'js/main.js' %}"></script>
