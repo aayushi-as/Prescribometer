@@ -11,6 +11,7 @@ urlpatterns = [
     path('profile/',views.profile, name='profile'),
     path('newPatient/',views.newPatient, name='newPatient'),
     path('newPatient/record/',views.record,name = 'record'),
-    path('newPatient/record/save_changes/',views.save_changes,name = 'save_changes'),
+    path('newPatient/record/proceed/',views.proceed,name = 'proceed'),
+    path('newPatient/record/proceed/save_changes',views.save_changes,name = 'save_changes'),
     path('newPatient/record/record',views.record,name = 'record'),
 ]

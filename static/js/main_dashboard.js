@@ -1,3 +1,11 @@
+const record = document.querySelector("#record")
+record.addEventListener("click",(event)=>{
+  if(record.innerText === "Record Details"){
+    record.innerText = "Stop Recording";
+  }else{
+    record.innerText = "Record Details";
+  }
+})
 
 (function() {
   "use strict";
@@ -312,3 +320,4 @@
   }
 
 })();
+

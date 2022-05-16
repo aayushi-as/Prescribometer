@@ -2,6 +2,24 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 import speech_recognition as sr
 import pyaudio
+import re
+import string
+import joblib
+import numpy as np
+import tensorflow as tf
+from tensorflow import keras
+from keras.models import load_model
+
+
+
+#joblib imports
+word2idx = joblib.load('./model/word2idx.sav')
+words = joblib.load('./model/words.sav')
+tags = joblib.load('./model/tags.sav')
+#model = joblib.load('./model/model.sav')
+model = keras.models.load_model('./model/model_weights.h5')
+
+
 
 # Create your views here.
 global audio_text
@@ -89,11 +107,6 @@ def logout(request):
 
 
 def record(request):
-    if request.method == 'GET':
-        data = request.GET['fulltextarea']
-        globals()['text_area'] = data
-    globals()['audio_text'] = globals()['audio_text']
-    # Removed
     globals()['count'] = not globals()['count']
     while globals()['count'] == True:
         r = sr.Recognizer()
@@ -112,10 +125,28 @@ def record(request):
     return render(request, 'new-patient.html', {'audio_text': globals()['audio_text']})
 
 
+def proceed(request):
+    return render(request, 'record-proceed.html', {'audio_text': globals()['audio_text']})
 def save_changes(request):
-    globals()['count'] = not globals()['count']
-    if(globals()['text_area'] != ""):
-        data = globals()['text_area']
-        globals()['audio_text'] = data
-        print(globals()['audio_text'])
-    return render(request, 'new-patient.html', {'audio_text': globals()['audio_text']})
+    if request.method == 'GET':
+         data = request.GET['fulltextarea']
+         globals()['text_area'] = data
+         globals()['audio_text'] = globals()['text_area']
+    print(globals()['audio_text'])
+    test_input = "Take Metformin Fortamet Glumetza twice a day for 6 months."
+    extract_ner(test_input)
+    return render(request, 'record-proceed.html', {'audio_text': globals()['audio_text']})
+
+def extract_ner(text):
+    re_tok = re.compile(f"([{string.punctuation}“”¨«»®´·º½¾¿¡§£₤‘’])")
+    sentence_test = re_tok.sub(r"  ", text).split()
+    padded_sentence = sentence_test + [word2idx["ENDPAD"]] * (50 - len(sentence_test))
+    padded_sentence = [word2idx.get(w, 0) for w in padded_sentence]
+    pred = model.predict(np.array([padded_sentence]))
+    pred = np.argmax(pred, axis=-1)
+    print("{:15}\t {}\n".format("Word","Pred"))
+    print("-" *30)
+    for w, pre in zip(padded_sentence, pred[0]):
+        if words[w-1] in text:
+            print("{:15}\t{}".format(words[w-1], tags[pre]))
+    #return null

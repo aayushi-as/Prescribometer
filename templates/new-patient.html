@@ -33,6 +33,7 @@
 	<!-- Template Main CSS File -->
 	<link href="{% static 'css/style.css' %}" rel="stylesheet">
 
+
 </head>
 
 <body>
@@ -163,13 +164,13 @@
                             <h5 class="card-title">Enter details</h5>
 
                             <form class="row g-3 mx-5">
-                                <div class="col-md-12">
+                                <!--<div class="col-md-12">
                                     <input type="text" class="form-control" placeholder="Your Name">
-                                </div>
+                                </div>-->
                                 <div class="col-md-6">
                                     <input type="email" class="form-control" placeholder="Email">
                                 </div>
-                                <div class="col-md-6">
+                                <!--<div class="col-md-6">
                                     <input type="number" class="form-control" placeholder="Phone Number">
                                 </div>
                                 <div class="col-12">
@@ -180,10 +181,9 @@
                                 </div>
                                 <div class="col-md-6">
                                     <input type="text" class="form-control" placeholder="Age">
-                                </div>
+                                </div>-->
                                 <div class="text-center">
                                     <button type="submit" class="btn">Submit</button>
-                                    <button type="reset" class="btn">Reset</button>
                                 </div>
                             </form><!-- End No Labels Form -->
 
@@ -191,33 +191,32 @@
                     </div>
                     <div class="voice-record text-center">
                         <form action="record" method="get">
-                        {% csrf_token %}
-                        <button type="submit" id = "Record" class="btn"><i class="bi bi-mic-fill me-1"></i>Record
+                        <button type="submit" id = "record" class="btn"><i class="bi bi-mic-fill me-1"></i>Record
                             Details
                         </button>
                           
                         <h3 class="my-4">Click on record to start recording prescription</h3>
-                        <div class="card mx-5">
+                        <!--<div class="card mx-5">
                             <div class="card-body">
                                 <h5 class="card-title">Enter details</h5>
                                 
                                 <form class="row g-3 mx-5" method="get" action="record">
                                     
-                                    <div class="col-md-12" >
+                                    <div class="col-md-12" >-->
                                         <!--<input name="audio_text" type="text" value='{{ audio_text }}' contenteditable="true"/>-->
-                                        <textarea name="fulltextarea" rows="10" cols="40">{{audio_text}}</textarea>
+                                        <!--<textarea name="fulltextarea" rows="10" cols="40">{{audio_text}}</textarea>-->
                                         <!--<h4 contentEditable="true" id="audio_text">{{audio_text}}</h4>-->
                                     
                                     
+                                    <!--</div>
                                     </div>
-                                    </div>
-                                    </div>
+                                    </div>-->
                                 </form>
                                 </div>
                                 <div class="text-center">
-                                    <form action = "save_changes">
-                                    <button type="submit" class="btn">Save Changes</button>
-                                    <button type="reset" class="btn">Proceed</button>
+                                    <form action = "proceed">
+                                    <button type="submit" class="btn">Proceed</button>
+                                    <!-- <button type="reset" class="btn">Proceed</button> -->
                                 </form>
                                 </div>
                                     </div>
@@ -250,8 +249,16 @@
 	<script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
 
 	<!-- Template Main JS File -->
-	<script src="{% static 'js/main_dashboard.js' %}"></script>
+	<script src="{% static 'js/main_dashboard.js' %}">
+        const record = document.querySelector("#record")
+        console.log(record.innerText)
+        record.addEventListener("click",(event)=>{
+            if(record.innerText === "Record Details"){
+                record.innerText = "Stop Recording";
+            }else{
+                record.innerText = "Record Details";
+            }})
+    </script>
 
 </body>
-
 </html>
