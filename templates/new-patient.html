@@ -49,12 +49,6 @@
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
 
-        <div class="search-bar">
-            <form class="search-form d-flex align-items-center" method="POST" action="#">
-                <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-                <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-            </form>
-        </div><!-- End Search Bar -->
 
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
@@ -68,7 +62,7 @@
                 <li class="nav-item dropdown pe-3">
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                        <img src="{% static 'img/profile-img.jpg' %}" alt="Profile" class="rounded-circle">
+                        <!-- <img src="{% static 'img/profile-img.jpg' %}" alt="Profile" class="rounded-circle"> -->
                         <span class="d-none d-md-block dropdown-toggle ps-2">{{user.first_name}}</span>
                     </a><!-- End Profile Iamge Icon -->
 
@@ -89,13 +83,6 @@
                         </li>
                         <li>
                             <hr class="dropdown-divider">
-                        </li>
-
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center" href="{% url 'profile' %}">
-                                <i class="bi bi-gear"></i>
-                                <span>Account Settings</span>
-                            </a>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
@@ -164,28 +151,24 @@
                             <h5 class="card-title">Enter details</h5>
 
                             <form class="row g-3 mx-5">
-                                <!--<div class="col-md-12">
+                                <div class="col-md-6">
                                     <input type="text" class="form-control" placeholder="Your Name">
-                                </div>-->
+                                </div>
                                 <div class="col-md-6">
                                     <input type="email" class="form-control" placeholder="Email">
                                 </div>
-                                <!--<div class="col-md-6">
+                                <!-- <div class="col-md-6">
                                     <input type="number" class="form-control" placeholder="Phone Number">
                                 </div>
-                                <div class="col-12">
-                                    <input type="text" class="form-control" placeholder="Address">
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="text" class="form-control" placeholder="City">
-                                </div>
-                                <div class="col-md-6">
+                                </div> -->
+                                <!-- <div class="col-md-6">
                                     <input type="text" class="form-control" placeholder="Age">
-                                </div>-->
+                                </div> -->
                                 <div class="text-center">
                                     <button type="submit" class="btn">Submit</button>
                                 </div>
-                            </form><!-- End No Labels Form -->
+                            </form>
+                            <!-- End No Labels Form -->
 
                         </div>
                     </div>

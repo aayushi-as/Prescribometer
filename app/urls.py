@@ -13,5 +13,6 @@ urlpatterns = [
     path('newPatient/record/',views.record,name = 'record'),
     path('newPatient/record/proceed/',views.proceed,name = 'proceed'),
     path('newPatient/record/proceed/save_changes',views.save_changes,name = 'save_changes'),
+    path('newPatient/record/proceed/generate',views.generate,name = 'generate'),
     path('newPatient/record/record',views.record,name = 'record'),
 ]

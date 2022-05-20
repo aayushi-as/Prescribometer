@@ -47,7 +47,6 @@
 			<i class="bi bi-list toggle-sidebar-btn"></i>
 		</div><!-- End Logo -->
 
-
 		<nav class="header-nav ms-auto">
 			<ul class="d-flex align-items-center">
 
@@ -126,8 +125,22 @@
 			</li>
 		</ul>
 	</aside><!-- End Sidebar-->
-
-
+	<br>
+	<br>
+	<br>
+	<br>
+	<!-- <h1 style="color: black;">HEYYYYYYYYYY</h1> -->
+	<div class="voice-record text-center">
+	<div class="col-md-12" >
+		<h3>Recorded Prescription</h3><br><br>
+		<!-- <input name="audio_text" type="text" value='{{ audio_text }}' contenteditable="true"/> -->
+		<!-- <h4 contentEditable="true" id="audio_text">{{audio_text}}</h4> -->
+		<form action="save_changes" method="get">
+			<textarea name="fulltextarea" rows="10" cols="40">{{audio_text}}</textarea> <br>
+			<button type="submit" id = "save_changes" class="btn">Sign & Proceed</button>
+		</form>
+	</div>
+	</div>
 
 	<!-- ======= Footer ======= -->
 	<!--<footer id="footer" class="footer">

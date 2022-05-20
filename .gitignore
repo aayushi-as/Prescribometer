@@ -3,3 +3,12 @@
 /Prescribometer/__pycache__
 /app/__pycache__/urls.cpython-38.pyc
 /app/__pycache__/views.cpython-38.pyc
+app/__pycache__/__init__.cpython-37.pyc
+app/__pycache__/admin.cpython-37.pyc
+app/__pycache__/apps.cpython-37.pyc
+app/__pycache__/models.cpython-37.pyc
+app/__pycache__/urls.cpython-37.pyc
+app/__pycache__/views.cpython-37.pyc
+app/migrations/__pycache__/0001_initial.cpython-37.pyc
+app/migrations/__pycache__/0002_auto_20220417_0959.cpython-37.pyc
+app/migrations/__pycache__/__init__.cpython-37.pyc

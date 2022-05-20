@@ -1,5 +1,6 @@
 from tkinter import CASCADE
 from django.db import models
+from pymysql import NULL
 
 # Create your models here.
 class Doctor(models.Model):
@@ -10,6 +11,7 @@ class Doctor(models.Model):
     state = models.TextField(max_length=25)
     city = models.TextField(max_length=25)
     hospital_name = models.TextField(max_length=50)
+    specialization = models.TextField(max_length=25, default=NULL)
 
     def __str__(self):
         return self.doctor_id
@@ -25,10 +27,10 @@ class Patients(models.Model):
     def __str__(self):
         return self.patient_id
 
-class Specialization(models.Model):
-    s_id = models.AutoField(primary_key=True)
-    doctor_id = models.ForeignKey(Doctor, on_delete=models.CASCADE)
-    description = models.TextField(max_length=25)
+# class Specialization(models.Model):
+#     s_id = models.AutoField(primary_key=True)
+#     doctor_id = models.ForeignKey(Doctor, on_delete=models.CASCADE)
+#     description = models.TextField(max_length=25)
 
-    def __str__(self):
-        return self.s_id
+#     def __str__(self):
+#         return self.s_id
